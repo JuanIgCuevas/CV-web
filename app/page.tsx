@@ -1,0 +1,354 @@
+"use client";
+
+import { motion } from "framer-motion";
+import {
+  ArrowUpRight,
+  BriefcaseBusiness,
+  Code2,
+  Github,
+  GraduationCap,
+  LayoutPanelLeft,
+  Mail,
+  MapPin,
+  Linkedin,
+  School2,
+  BookCheck,
+  Sparkles,
+  Zap,
+} from "lucide-react";
+import { profile } from "@/lib/profile";
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.09,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0 },
+};
+
+function SectionLabel({ icon: Icon, title }: { icon: React.ComponentType<{ className?: string }>; title: string }) {
+  return (
+    <div className="mb-5 flex items-center gap-3 text-sm uppercase tracking-[0.28em] text-white/60">
+      <span className="rounded-full border border-white/10 bg-white/5 p-2 text-accent-soft">
+        <Icon className="h-4 w-4" />
+      </span>
+      <span>{title}</span>
+    </div>
+  );
+}
+
+function formatDate(date: string) {
+  return date.replace("-", "/");
+}
+
+function getInitials(name: string) {
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
+}
+
+export default function HomePage() {
+  return (
+    <main className="relative overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(206,167,90,0.16),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.08),transparent_20%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_20%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-radial-grid bg-[size:100%_100%,22px_22px,22px_22px] opacity-20 [mask-image:linear-gradient(180deg,white,transparent_92%)]" />
+
+      <section className="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 py-8 lg:px-10">
+        <header className="mb-10 flex items-center justify-between rounded-full border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-xl">
+          <div className="flex items-center gap-3">
+            <div className="h-12 w-12 overflow-hidden rounded-full border border-white/15 bg-white/5 p-0.5 shadow-lg shadow-black/20">
+              <img
+                src={profile.photo}
+                alt={`Foto de ${profile.name}`}
+                className="h-full w-full rounded-full object-cover object-[50%_18%]"
+              />
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-[0.35em] text-white/50">Portfolio CV</p>
+              <p className="mt-1 text-sm text-white/80">{profile.name}</p>
+            </div>
+          </div>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm text-white transition hover:border-accent hover:bg-accent/10"
+          >
+            Contacto <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </header>
+
+        <motion.div
+          className="grid flex-1 gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start"
+          variants={container}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.div variants={item} className="max-w-3xl pb-4 lg:pb-16">
+            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white/65">
+              <Sparkles className="h-4 w-4 text-accent-soft" />
+              {profile.availability}
+            </p>
+            <h1 className="font-display text-6xl leading-[0.92] tracking-tight text-white sm:text-7xl lg:text-[7.5rem]">
+              {profile.headline}
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-7 text-white/72 sm:text-lg">
+              {profile.summary}
+            </p>
+
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-white/60 sm:text-base">
+              {profile.about}
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-[#15120d] transition hover:translate-y-[-1px] hover:shadow-glow"
+              >
+                Ver proyectos <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <a
+                href="#experience"
+                className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/5 px-5 py-3 text-sm font-medium text-white transition hover:border-white/20 hover:bg-white/8"
+              >
+                Experiencia <BriefcaseBusiness className="h-4 w-4" />
+              </a>
+            </div>
+
+            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+              {profile.highlights.map((highlight) => (
+                <div key={highlight.label} className="rounded-3xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
+                  <p className="text-3xl font-semibold text-white">{highlight.value}</p>
+                  <p className="mt-2 text-sm text-white/60">{highlight.label}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.aside variants={item} className="relative pb-4 lg:pb-16">
+            <div className="absolute inset-x-8 -top-10 h-44 rounded-full bg-accent/10 blur-3xl" />
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-6 shadow-2xl shadow-black/30 backdrop-blur-xl">
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-accent/70 to-transparent" />
+              <div className="relative mx-auto mb-6 flex h-64 w-64 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-[#14110d] sm:h-72 sm:w-72 lg:h-80 lg:w-80">
+                <img
+                  src={profile.photo}
+                  alt={`Foto de ${profile.name}`}
+                  className="h-full w-full object-cover object-[50%_18%]"
+                  onError={(event) => {
+                    event.currentTarget.style.display = "none";
+                  }}
+                />
+              </div>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.28em] text-white/50">Perfil profesional</p>
+                  <p className="mt-2 font-display text-3xl text-white">{profile.role}</p>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-3 text-accent-soft">
+                  <Zap className="h-5 w-5" />
+                </div>
+              </div>
+
+              <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-black/20 p-4">
+                <div className="flex items-center gap-3 text-white/80">
+                  <MapPin className="h-4 w-4 text-accent-soft" />
+                  {profile.location}
+                </div>
+                <p className="mt-3 text-sm leading-6 text-white/60">
+                  {profile.intro}
+                </p>
+              </div>
+
+              <div className="mt-8 space-y-4">
+                <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+                  <div className="flex items-center gap-3 text-white/80">
+                    <LayoutPanelLeft className="h-4 w-4 text-accent-soft" />
+                    Enfoque principal
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-white/60">
+                    {profile.focus}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.aside>
+        </motion.div>
+      </section>
+
+      <section id="experience" className="relative mx-auto w-full max-w-7xl px-6 py-10 lg:px-10 lg:py-16">
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <SectionLabel icon={BriefcaseBusiness} title="Experiencia" />
+            <h2 className="font-display text-4xl text-white sm:text-5xl">Experiencia reciente orientada a mejora y ejecución.</h2>
+            <p className="mt-4 max-w-md text-white/65">
+              Este bloque resume tu recorrido laboral con foco en impacto, calidad y herramientas reales.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {profile.timeline.map((entry) => (
+              <article key={entry.year} className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-white/20">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <p className="text-sm uppercase tracking-[0.28em] text-accent-soft">{entry.year}</p>
+                  <p className="text-sm text-white/45">{entry.company}</p>
+                </div>
+                <h3 className="mt-3 text-2xl font-semibold text-white">{entry.title}</h3>
+                <p className="mt-3 max-w-2xl text-white/65">{entry.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative mx-auto w-full max-w-7xl px-6 py-10 lg:px-10 lg:py-16">
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <SectionLabel icon={School2} title="Educación" />
+            <h2 className="font-display text-4xl text-white sm:text-5xl">Base académica en sistemas y formación continua.</h2>
+          </div>
+
+          <div className="space-y-4">
+            {profile.education.map((item) => (
+              <article key={item.institution} className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-white/20">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <p className="text-sm uppercase tracking-[0.28em] text-accent-soft">{item.degree}</p>
+                  <p className="text-sm text-white/45">{item.startDate} - {item.endDate}</p>
+                </div>
+                <h3 className="mt-3 text-2xl font-semibold text-white">{item.summary}</h3>
+                <p className="mt-2 text-white/70">{item.institution}</p>
+                <p className="mt-2 text-sm text-white/55">{item.area} · {item.location}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative mx-auto w-full max-w-7xl px-6 py-10 lg:px-10 lg:py-16">
+        <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr]">
+          <div id="projects">
+            <SectionLabel icon={Code2} title="Proyectos" />
+            <div className="grid gap-4">
+              {profile.projects.map((project) => (
+                <article key={project.name} className="rounded-[1.75rem] border border-white/10 bg-[#17130f]/85 p-6 transition hover:border-accent/50 hover:bg-[#1b1611]">
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p className="text-sm uppercase tracking-[0.28em] text-white/45">{project.tag}</p>
+                      <h3 className="mt-2 text-2xl font-semibold text-white">{project.name}</h3>
+                    </div>
+                    <ArrowUpRight className="h-5 w-5 text-accent-soft" />
+                  </div>
+                  <p className="mt-4 max-w-2xl text-white/65">{project.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <SectionLabel icon={Sparkles} title="Competencias" />
+            <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+              <div className="flex flex-wrap gap-3">
+                {profile.skills.map((skill) => (
+                  <span key={skill} className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/75">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-black/20 p-5">
+                <p className="text-sm uppercase tracking-[0.28em] text-white/45">Valor diferencial</p>
+                <p className="mt-3 text-white/75 leading-7">
+                  Un enfoque que combina mejora continua, criterio técnico y una ejecución cuidada para aportar valor concreto al equipo.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative mx-auto w-full max-w-7xl px-6 py-10 lg:px-10 lg:py-16">
+        <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
+          <div>
+            <SectionLabel icon={BookCheck} title="Certificados" />
+            <div className="space-y-4">
+              {profile.certificates.map((certificate) => (
+                <article key={certificate.name} className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <h3 className="text-lg font-semibold text-white">{certificate.name}</h3>
+                      <p className="mt-2 text-sm text-white/60">{certificate.issuer}</p>
+                    </div>
+                    <p className="text-xs uppercase tracking-[0.28em] text-accent-soft">{formatDate(certificate.date)}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <SectionLabel icon={GraduationCap} title="Idiomas" />
+            <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+              <div className="flex flex-wrap gap-3">
+                {profile.languages.map((language) => (
+                  <span key={language} className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/75">
+                    {language}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-8 rounded-[1.5rem] border border-white/10 bg-black/20 p-5">
+                <p className="text-sm uppercase tracking-[0.28em] text-white/45">Disponibilidad</p>
+                <p className="mt-3 text-white/75 leading-7">{profile.availability}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="relative mx-auto w-full max-w-7xl px-6 py-10 pb-16 lg:px-10 lg:py-20">
+        <div className="rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] p-8 backdrop-blur-xl lg:p-10">
+          <SectionLabel icon={Mail} title="Contacto" />
+          <div className="grid gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:items-end">
+            <div>
+              <h2 className="font-display text-4xl text-white sm:text-5xl">
+                Si quieres una presentación que proyecte más valor, este es un buen punto de partida.
+              </h2>
+              <p className="mt-4 max-w-2xl text-white/65">
+                Podemos adaptar este proyecto con tu nombre, foto, experiencia real, enlaces y paleta personal para dejarlo listo como CV online.
+              </p>
+            </div>
+
+            <a
+              href={`mailto:${profile.contact}`}
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#14110d] transition hover:translate-y-[-1px]"
+            >
+              {profile.contact} <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            {profile.socialNetworks.map((network) => (
+              <a
+                key={network.network}
+                href={network.url}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/75 transition hover:border-white/20 hover:bg-white/10"
+              >
+                {network.network === "LinkedIn" ? <Linkedin className="h-4 w-4" /> : <Github className="h-4 w-4" />}
+                {network.network} / {network.username}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
