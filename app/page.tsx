@@ -325,27 +325,39 @@ export default function HomePage() {
               </p>
             </div>
 
-            <a
-              href={`mailto:${profile.contact}`}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#14110d] transition hover:translate-y-[-1px]"
-            >
-              {profile.contact} <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
+            <div className="w-fit lg:ml-auto">
+              <p className="mb-4 text-center text-sm font-semibold uppercase tracking-[0.22em] text-white/60">
+                Contáctame
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                <a
+                  href={`mailto:${profile.contact}`}
+                  aria-label="Enviar un correo"
+                  title="Enviar un correo"
+                  className="group inline-flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-white text-[#14110d] shadow-lg shadow-black/10 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#14110d]"
+                >
+                  <Mail className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
+                </a>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            {profile.socialNetworks.map((network) => (
-              <a
-                key={network.network}
-                href={network.url}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/75 transition hover:border-white/20 hover:bg-white/10"
-              >
-                {network.network === "LinkedIn" ? <Linkedin className="h-4 w-4" /> : <Github className="h-4 w-4" />}
-                {network.network} / {network.username}
-              </a>
-            ))}
+                {profile.socialNetworks.map((network) => (
+                  <a
+                    key={network.network}
+                    href={network.url}
+                    aria-label={`Visitar mi perfil de ${network.network}`}
+                    title={network.network}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group inline-flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/80 transition duration-300 hover:-translate-y-1 hover:border-white/30 hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#14110d]"
+                  >
+                    {network.network === "LinkedIn" ? (
+                      <Linkedin className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
+                    ) : (
+                      <Github className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
+                    )}
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
