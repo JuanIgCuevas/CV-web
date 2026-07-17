@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import {
   ArrowUpRight,
   BriefcaseBusiness,
@@ -14,6 +15,8 @@ import {
   School2,
   BookCheck,
   Sparkles,
+  Moon,
+  Sun,
   Zap,
 } from "lucide-react";
 import { profile } from "@/lib/profile";
@@ -59,6 +62,24 @@ function getInitials(name: string) {
 }
 
 export default function HomePage() {
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    const preferredTheme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    const initialTheme = savedTheme === "light" || savedTheme === "dark" ? savedTheme : preferredTheme;
+
+    setTheme(initialTheme);
+    document.documentElement.dataset.theme = initialTheme;
+  }, []);
+
+  function toggleTheme() {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    document.documentElement.dataset.theme = nextTheme;
+    localStorage.setItem("theme", nextTheme);
+  }
+
   return (
     <main className="relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(206,167,90,0.16),transparent_28%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.08),transparent_20%),linear-gradient(180deg,rgba(255,255,255,0.02),transparent_20%)]" />
@@ -79,12 +100,23 @@ export default function HomePage() {
               <p className="mt-1 text-sm text-white/80">{profile.name}</p>
             </div>
           </div>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm text-white transition hover:border-accent hover:bg-accent/10"
-          >
-            Contacto <ArrowUpRight className="h-4 w-4" />
-          </a>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label={theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+              title={theme === "dark" ? "Modo claro" : "Modo oscuro"}
+              className="theme-toggle inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white transition hover:border-accent hover:bg-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm text-white transition hover:border-accent hover:bg-accent/10"
+            >
+              Contacto <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
         </header>
 
         <motion.div

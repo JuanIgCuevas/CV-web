@@ -12,6 +12,14 @@
   --border: rgba(255, 255, 255, 0.1);
 }
 
+:root[data-theme="light"] {
+  --background: #f5f0e7;
+  --foreground: #211c16;
+  --surface: rgba(255, 255, 255, 0.68);
+  --muted: rgba(33, 28, 22, 0.66);
+  --border: rgba(64, 51, 36, 0.14);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -29,6 +37,54 @@ body {
     linear-gradient(180deg, #120f0c 0%, #0d0b09 38%, #080707 100%);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+  transition: background 300ms ease, color 300ms ease;
+}
+
+:root[data-theme="light"] body {
+  background:
+    radial-gradient(circle at top, rgba(209, 171, 92, 0.22), transparent 28%),
+    radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.9), transparent 20%),
+    linear-gradient(180deg, #faf7f1 0%, #f3ede3 45%, #ebe3d7 100%);
+}
+
+/* The design uses translucent Tailwind utilities throughout. These theme
+   overrides preserve that glass effect while giving the light mode enough contrast. */
+:root[data-theme="light"] .text-white,
+:root[data-theme="light"] [class*="text-white/"] {
+  color: var(--foreground) !important;
+}
+
+:root[data-theme="light"] [class*="border-white/"] {
+  border-color: var(--border) !important;
+}
+
+:root[data-theme="light"] [class*="bg-white/"] {
+  background-color: rgba(255, 255, 255, 0.58) !important;
+}
+
+:root[data-theme="light"] [class*="bg-black/"] {
+  background-color: rgba(75, 58, 39, 0.06) !important;
+}
+
+:root[data-theme="light"] article[class*="bg-[#17130f]"],
+:root[data-theme="light"] div[class*="bg-[#14110d]"] {
+  background-color: rgba(255, 255, 255, 0.68) !important;
+}
+
+:root[data-theme="light"] .shadow-black\/30,
+:root[data-theme="light"] .shadow-black\/20 {
+  --tw-shadow-color: rgba(73, 54, 31, 0.12) !important;
+}
+
+:root[data-theme="light"] .theme-toggle {
+  background-color: rgba(255, 255, 255, 0.72) !important;
+  color: #33291e !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
 }
 
 ::selection {
