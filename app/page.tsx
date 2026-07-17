@@ -6,6 +6,7 @@ import {
   ArrowUpRight,
   BriefcaseBusiness,
   Code2,
+  Download,
   Github,
   GraduationCap,
   LayoutPanelLeft,
@@ -358,6 +359,13 @@ export default function HomePage() {
             </div>
 
             <div className="w-fit lg:ml-auto">
+              <a
+                href="/juan-ignacio-cuevas-cv.pdf"
+                download="Juan Ignacio Cuevas - CV.pdf"
+                className="mb-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-[#15120d] transition hover:-translate-y-0.5 hover:shadow-glow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-[#14110d]"
+              >
+                Descargar CV <Download className="h-4 w-4" />
+              </a>
               <p className="mb-4 text-center text-sm font-semibold uppercase tracking-[0.22em] text-white/60">
                 Contáctame
               </p>
