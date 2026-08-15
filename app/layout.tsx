@@ -14,8 +14,8 @@ const sans = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "CV | Portfolio profesional",
-  description: "Sitio web profesional y sofisticado para mostrar tu CV con animaciones, experiencia, proyectos y contacto.",
+  title: "Juan Ignacio Cuevas | Portfolio",
+  description: "Portfolio profesional de Juan Ignacio Cuevas, Analista E-Commerce y Desarrollador Full Stack especializado en React, Supabase y mejora de procesos.",
 };
 
 export default function RootLayout({

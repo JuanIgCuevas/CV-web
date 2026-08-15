@@ -1,19 +1,20 @@
+export type ProjectCategory = "Producto" | "Automatización" | "Aprendizaje";
+
 export const profile = {
   name: "Juan Ignacio Cuevas",
-  role: "Analista E-Commerce / Desarrollador Full Stack",
-  availability: "Disponible para full time",
-  location: "Tandil, Buenos Aires",
+  shortName: "Juan Cuevas",
+  role: "Analista E-Commerce & Desarrollador Full Stack",
+  availability: "Disponible para oportunidades full time",
+  location: "Tandil, Buenos Aires, Argentina",
   photo: "/juan-ignacio-cuevas.jpg",
-  headline: "Creo experiencias digitales de calidad.",
+  headline: "Conecto producto, datos y desarrollo.",
   summary:
-    "Soy una persona responsable y comprometida, siempre dispuesto a asumir nuevos retos. Mi pasión por aprender constantemente me impulsa a crecer y superarme. También me considero exigente y ambicioso, con muchas ganas de obtener los resultados que me propongo.",
+    "Transformo tareas repetitivas y problemas operativos en herramientas claras, medibles y fáciles de usar.",
   intro:
-    "Tengo mucha facilidad para trabajar en equipo y para hacer incrementar el rendimiento del mismo.",
+    "Trabajo en la intersección entre operaciones e-commerce y desarrollo. Entiendo el problema desde adentro y construyo soluciones con criterio técnico, orden y foco en las personas que las usan.",
   focus:
-    "React, Supabase, SQL, automatización de procesos, mejoras internas y construcción de interfaces claras para equipos de trabajo.",
+    "React, Supabase, SQL, automatización de procesos, calidad de catálogo e interfaces internas.",
   contact: "ig.juancuevas@gmail.com",
-  phone: "",
-  website: "",
   socialNetworks: [
     {
       network: "LinkedIn",
@@ -26,38 +27,57 @@ export const profile = {
       url: "https://github.com/JuanIgCuevas",
     },
   ],
-  about:
-    "Me enfoco en resolver problemas con criterio, orden y una mentalidad de mejora continua. Me interesa combinar el lado técnico con una visión práctica para aportar valor tanto al equipo como al producto.",
-  highlights: [
-    { label: "Ubicación", value: "Tandil" },
-    { label: "Disponibilidad", value: "Full time" },
-    { label: "Enfoque", value: "Calidad + mejora" },
+  metrics: [
+    { value: "2", label: "roles activos" },
+    { value: "5", label: "certificaciones" },
+    { value: "19+", label: "tecnologías y herramientas" },
   ],
   education: [
     {
       institution: "Universidad Nacional del Centro de la Provincia de Buenos Aires (UNICEN)",
-      area: "Exactas",
-      degree: "Grado",
+      area: "Facultad de Ciencias Exactas",
+      degree: "Ingeniería de Sistemas",
       startDate: "2020",
       endDate: "En curso",
       location: "Tandil, Buenos Aires",
-      summary: "Ingeniería de Sistemas",
     },
   ],
   timeline: [
     {
-      year: "2025-08 - Hoy",
-      title: "Desarrollador Full Stack - React & Supabase",
+      year: "Ago. 2025 — Actualidad",
+      title: "Desarrollador Full Stack · React & Supabase",
       company: "Grupo KELSOFT",
       description:
-        "Integro el Equipo de Mejoras del Proyecto Catálogo, construyendo herramientas internas para agilizar circuitos de trabajo y automatizar tareas operativas.",
+        "Integro el Equipo de Mejoras del Proyecto Catálogo. Desarrollo herramientas internas que simplifican circuitos de trabajo y automatizan tareas operativas.",
+      highlights: ["Herramientas internas", "React + Supabase", "Automatización"],
     },
     {
-      year: "2025-04 - Hoy",
+      year: "Abr. 2025 — Actualidad",
       title: "Analista E-Commerce",
       company: "Grupo KELSOFT",
       description:
-        "Reviso publicaciones, garantizo calidad y coherencia, detecto errores o inconsistencias y propongo mejoras en procesos, herramientas y metodologías.",
+        "Reviso publicaciones, aseguro calidad y coherencia, detecto inconsistencias y propongo mejoras sobre procesos, herramientas y metodologías.",
+      highlights: ["Calidad de catálogo", "Análisis", "Mejora continua"],
+    },
+  ],
+  services: [
+    {
+      number: "01",
+      title: "Producto e-commerce",
+      text: "Análisis de publicaciones y flujos para detectar errores, elevar la calidad y convertir hallazgos en mejoras accionables.",
+      tags: ["Catálogo", "Calidad", "Procesos"],
+    },
+    {
+      number: "02",
+      title: "Herramientas internas",
+      text: "Interfaces enfocadas en reducir trabajo manual, ordenar circuitos y ayudar a los equipos a operar con mayor claridad.",
+      tags: ["React", "UX interna", "Automatización"],
+    },
+    {
+      number: "03",
+      title: "Datos e integraciones",
+      text: "Modelado y consulta de datos para construir soluciones confiables, trazables y conectadas con la operación real.",
+      tags: ["Supabase", "SQL", "PostgreSQL"],
     },
   ],
   skills: [
@@ -66,64 +86,70 @@ export const profile = {
     "Java",
     "Python",
     "PHP",
-    "Postgres",
-    "SQL",
     "PostgreSQL",
     "MySQL",
+    "SQL",
     "SCRUM",
-    "Eclipse",
-    "Visual Studio Code",
-    "PgAdmin",
-    "Linux",
-    "GitHub",
-    "GitHub Desktop",
+    "Git & GitHub",
     "JIRA",
     "Asana",
     "Slack",
+    "Linux",
+    "Visual Studio Code",
   ],
   certificates: [
-    {
-      name: "Curso de IA para Desarrolladores",
-      date: "2026-04",
-      issuer: "ITSCHOOL, educación IT",
-    },
-    {
-      name: "Certificación en Python",
-      date: "2025-11",
-      issuer: "ITSCHOOL, educación IT",
-    },
+    { name: "Curso de IA para Desarrolladores", date: "Abr. 2026", issuer: "IT School · Educación IT" },
+    { name: "Certificación en Python", date: "Nov. 2025", issuer: "IT School · Educación IT" },
     {
       name: "Optimización y mejora de procesos con herramientas de IA",
-      date: "2025-08",
-      issuer: "ITSCHOOL, educación IT",
+      date: "Ago. 2025",
+      issuer: "IT School · Educación IT",
     },
-    {
-      name: "Bases de GIT, GITHUB",
-      date: "2024-05",
-      issuer: "Desafío Latam",
-    },
-    {
-      name: "Un día como Data Analyst",
-      date: "2024-05",
-      issuer: "Desafío Latam",
-    },
+    { name: "Bases de Git y GitHub", date: "May. 2024", issuer: "Desafío Latam" },
+    { name: "Un día como Data Analyst", date: "May. 2024", issuer: "Desafío Latam" },
   ],
-  languages: ["Español: nativo", "Inglés: intermedio"],
+  languages: ["Español · Nativo", "Inglés · Intermedio"],
   projects: [
     {
-      name: "Herramientas internas para Catálogo",
-      tag: "Automatización",
-      text: "Soluciones en React y Supabase para reducir trabajo manual y mejorar el circuito operativo del equipo.",
+      name: "Herramientas para Catálogo",
+      category: "Automatización" as ProjectCategory,
+      index: "01",
+      text: "Soluciones internas para reducir trabajo manual y mejorar el circuito operativo del equipo de catálogo.",
+      stack: ["React", "Supabase", "SQL"],
+      note: "Proyecto profesional · detalles reservados",
     },
     {
-      name: "Mejoras sobre procesos E-Commerce",
-      tag: "Calidad",
-      text: "Revisión de publicaciones, detección de inconsistencias y propuestas de mejora sobre flujo y productividad.",
+      name: "Sistema de control de calidad",
+      category: "Producto" as ProjectCategory,
+      index: "02",
+      text: "Criterios y flujos de revisión para detectar inconsistencias y sostener publicaciones más claras y confiables.",
+      stack: ["E-Commerce", "Análisis", "Procesos"],
+      note: "Caso de trabajo · Grupo KELSOFT",
     },
     {
-      name: "Base técnica en crecimiento",
-      tag: "Aprendizaje continuo",
-      text: "Formación en Python, IA, Git y prácticas colaborativas para fortalecer el perfil técnico y analítico.",
+      name: "Laboratorio técnico personal",
+      category: "Aprendizaje" as ProjectCategory,
+      index: "03",
+      text: "Prácticas y prototipos donde aplico Python, IA, Git y desarrollo web para consolidar nuevas habilidades.",
+      stack: ["Python", "IA", "GitHub"],
+      note: "Evolución continua",
+    },
+  ],
+  faqs: [
+    {
+      question: "¿Qué tipo de rol estás buscando?",
+      answer:
+        "Busco una oportunidad full time donde pueda combinar desarrollo, análisis y mejora de procesos, especialmente en equipos de producto, e-commerce o herramientas internas.",
+    },
+    {
+      question: "¿Cuál es tu modalidad de trabajo?",
+      answer:
+        "Estoy abierto a propuestas remotas, híbridas o presenciales en Tandil y alrededores, según el desafío y la dinámica del equipo.",
+    },
+    {
+      question: "¿Qué aportás a un equipo?",
+      answer:
+        "Una mirada práctica que une operación y tecnología: puedo detectar un problema en el flujo, entender su impacto y acompañar la construcción de una solución clara.",
     },
   ],
 };
