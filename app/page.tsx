@@ -93,7 +93,7 @@ const copy = {
     switchLanguage: "View portfolio in Spanish",
     talk: "Let's talk",
     explore: "Explore my work",
-    download: "Download CV (ES)",
+    download: "Download CV",
     portraitAlt: "Portrait of Juan Ignacio Cuevas",
     portraitRole: "Analyst + Developer",
     improvement: "Continuous improvement",
@@ -183,6 +183,8 @@ export default function HomePage() {
   const content = language === "es" ? profile : profileEn;
   const ui = copy[language];
   const navItems = navHrefs.map((href, index) => ({ href, label: ui.nav[index] }));
+  const cvHref = language === "es" ? "/juan-ignacio-cuevas-cv.pdf" : "/juan-ignacio-cuevas-cv-en.pdf";
+  const cvFilename = language === "es" ? "Juan Ignacio Cuevas - CV.pdf" : "Juan Ignacio Cuevas - CV - English.pdf";
 
   const visibleProjects = content.projects.filter(
     (project) => activeFilter === "Todos" || project.category === activeFilter,
@@ -258,7 +260,7 @@ export default function HomePage() {
           </motion.p>
           <motion.div className="hero-actions" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
             <a className="button button-primary" href="#proyectos">{ui.explore} <ArrowDown /></a>
-            <a className="button button-secondary" href="/juan-ignacio-cuevas-cv.pdf" download="Juan Ignacio Cuevas - CV.pdf">{ui.download} <Download /></a>
+            <a className="button button-secondary" href={cvHref} download={cvFilename}>{ui.download} <Download /></a>
           </motion.div>
           <div className="hero-meta">
             <span><MapPin /> {content.location}</span>
@@ -420,7 +422,7 @@ export default function HomePage() {
             <div><span className="brand-mark dark">JC</span><p>{content.name}<small>{content.role}</small></p></div>
             <div className="footer-links">
               {content.socialNetworks.map((network) => <a key={network.network} href={network.url} target="_blank" rel="noreferrer"><SocialIcon network={network.network} />{network.network}</a>)}
-              <a href="/juan-ignacio-cuevas-cv.pdf" download><Download />CV</a>
+              <a href={cvHref} download={cvFilename}><Download />CV</a>
             </div>
             <p>© 2026 · {ui.builtWith}</p>
           </div>
