@@ -9,6 +9,7 @@ Portfolio/CV personal desarrollado con Next.js, TypeScript, Tailwind CSS y Frame
 - Filtro interactivo de proyectos y sección de preguntas frecuentes.
 - Tema claro/oscuro con preferencia persistente.
 - Descarga directa del CV y accesos a LinkedIn, GitHub y correo.
+- Formulario de contacto protegido con validación, campo trampa y límite de envíos.
 - Animaciones accesibles que respetan `prefers-reduced-motion`.
 
 ## Uso local
@@ -18,3 +19,11 @@ Portfolio/CV personal desarrollado con Next.js, TypeScript, Tailwind CSS y Frame
 3. Generar la versión de producción con `npm run build`.
 
 Los datos personales y profesionales se administran desde `lib/profile.ts`.
+
+## Configuración del formulario de contacto
+
+1. Copiar `.env.example` como `.env.local`.
+2. Configurar `RESEND_API_KEY`, `CONTACT_TO_EMAIL` y `CONTACT_FROM_EMAIL`.
+3. Para protección avanzada, agregar las claves pública y privada de Cloudflare Turnstile.
+
+La dirección de destino y las claves privadas se utilizan exclusivamente en el servidor y no se incluyen en el código enviado al navegador.

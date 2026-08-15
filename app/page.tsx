@@ -15,7 +15,6 @@ import {
   GraduationCap,
   Layers3,
   Linkedin,
-  Mail,
   MapPin,
   Menu,
   Moon,
@@ -24,6 +23,7 @@ import {
   X,
 } from "lucide-react";
 import { profile, profileEn, type ProjectCategory } from "@/lib/profile";
+import { ContactForm } from "@/components/contact-form";
 
 const navHrefs = ["#perfil", "#experiencia", "#aportes", "#proyectos", "#contacto"];
 
@@ -77,7 +77,6 @@ const copy = {
     contact: "Contacto",
     contactTitle: "¿Hay un problema interesante por resolver?",
     contactText: "Estoy abierto a conversar sobre desarrollo Full Stack, productos digitales y nuevas oportunidades.",
-    sendEmail: "Enviar un correo",
     builtWith: "Construido con Next.js",
   },
   en: {
@@ -122,19 +121,11 @@ const copy = {
     contact: "Contact",
     contactTitle: "Have an interesting problem to solve?",
     contactText: "I am open to conversations about Full Stack development, digital products, and new opportunities.",
-    sendEmail: "Send an email",
     builtWith: "Built with Next.js",
   },
 } as const;
 
 type Language = keyof typeof copy;
-
-const protectedEmail = [105, 103, 46, 106, 117, 97, 110, 99, 117, 101, 118, 97, 115, 64, 103, 109, 97, 105, 108, 46, 99, 111, 109];
-
-function openEmailClient() {
-  const address = protectedEmail.map((character) => String.fromCharCode(character)).join("");
-  window.location.href = `mailto:${address}`;
-}
 
 function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const reduceMotion = useReducedMotion();
@@ -228,7 +219,7 @@ export default function HomePage() {
           <button className="icon-button" type="button" onClick={toggleTheme} aria-label={theme === "dark" ? ui.lightTheme : ui.darkTheme}>
             {theme === "dark" ? <Sun /> : <Moon />}
           </button>
-          <button className="header-cta" type="button" onClick={openEmailClient}>{ui.talk} <ArrowUpRight /></button>
+          <a className="header-cta" href="#contacto">{ui.talk} <ArrowUpRight /></a>
           <button className="icon-button menu-button" type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? ui.closeMenu : ui.openMenu} aria-expanded={menuOpen}>
             {menuOpen ? <X /> : <Menu />}
           </button>
@@ -410,14 +401,14 @@ export default function HomePage() {
 
       <footer id="contacto" className="contact-section">
         <div className="page-shell">
-          <Reveal>
-            <p className="eyebrow light"><span />{ui.contact}</p>
-            <h2>{ui.contactTitle}</h2>
-            <p className="contact-intro">{ui.contactText}</p>
-            <button className="contact-email" type="button" onClick={openEmailClient}>
-              {ui.sendEmail} <Mail aria-hidden="true" /><ArrowUpRight aria-hidden="true" />
-            </button>
-          </Reveal>
+          <div className="contact-layout">
+            <Reveal className="contact-copy">
+              <p className="eyebrow light"><span />{ui.contact}</p>
+              <h2>{ui.contactTitle}</h2>
+              <p className="contact-intro">{ui.contactText}</p>
+            </Reveal>
+            <Reveal delay={0.08}><ContactForm language={language} /></Reveal>
+          </div>
           <div className="footer-bottom">
             <div><span className="brand-mark dark">JC</span><p>{content.name}<small>{content.role}</small></p></div>
             <div className="footer-links">
