@@ -1,20 +1,29 @@
-# CV Web
+# Portfolio · Juan Ignacio Cuevas
 
-Armé este sitio como mi portfolio/CV personal usando Next.js, TypeScript, Tailwind CSS y Framer Motion.
+Portfolio/CV personal desarrollado con Next.js, TypeScript, Tailwind CSS y Framer Motion.
 
-## Qué hice
-- Diseñé un hero editorial con animaciones suaves.
-- Organicé la experiencia laboral en formato timeline.
-- Sumé proyectos destacados, habilidades, educación, certificados e idiomas.
-- Dejé un bloque de contacto profesional con mis redes.
-- Integré mi foto de perfil para que el sitio se vea más personal.
+## Características
 
-## Cómo lo corro
-1. Instalar dependencias: `npm install`
-2. Levantar la versión local: `npm run start`
-3. Si quiero recompilar antes: `npm run build`
+- Presentación editorial y responsive con identidad visual propia.
+- Navegación por perfil, experiencia, aportes, proyectos y contacto.
+- Filtro interactivo de proyectos y sección de preguntas frecuentes.
+- Tema claro/oscuro con preferencia persistente.
+- Descarga directa del CV y accesos a LinkedIn, GitHub y correo.
+- Formulario de contacto protegido con validación, campo trampa y límite de envíos.
+- Animaciones accesibles que respetan `prefers-reduced-motion`.
 
-## Dónde cambio mis datos
-- Edito [lib/profile.ts](lib/profile.ts) para actualizar nombre, bio, experiencia, educación, certificados, habilidades y contacto.
-- La foto va en [public/juan-ignacio-cuevas.jpg](public/juan-ignacio-cuevas.jpg).
-- Mis enlaces de LinkedIn y GitHub ya quedan definidos desde el perfil.
+## Uso local
+
+1. Instalar dependencias con `npm install`.
+2. Iniciar el entorno con `npm run dev`.
+3. Generar la versión de producción con `npm run build`.
+
+Los datos personales y profesionales se administran desde `lib/profile.ts`.
+
+## Configuración del formulario de contacto
+
+1. Copiar `.env.example` como `.env.local`.
+2. Configurar `RESEND_API_KEY`, `CONTACT_TO_EMAIL` y `CONTACT_FROM_EMAIL`.
+3. Para protección avanzada, agregar las claves pública y privada de Cloudflare Turnstile.
+
+La dirección de destino y las claves privadas se utilizan exclusivamente en el servidor y no se incluyen en el código enviado al navegador.
