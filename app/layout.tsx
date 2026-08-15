@@ -15,7 +15,7 @@ const sans = Manrope({
 
 export const metadata: Metadata = {
   title: "Juan Ignacio Cuevas | Portfolio",
-  description: "Portfolio profesional de Juan Ignacio Cuevas, Analista E-Commerce y Desarrollador Full Stack especializado en React, Supabase y mejora de procesos.",
+  description: "Portfolio profesional de Juan Ignacio Cuevas, Desarrollador Full Stack especializado en React, Supabase, SQL y mejora de procesos.",
 };
 
 export default function RootLayout({

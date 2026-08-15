@@ -67,7 +67,8 @@ button { font: inherit; }
 .header-actions { display: flex; align-items: center; gap: 8px; }
 .icon-button { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--line); background: transparent; cursor: pointer; }
 .icon-button svg { width: 17px; }
-.header-cta { min-height: 42px; display: inline-flex; align-items: center; gap: 9px; padding: 0 16px; background: var(--text); color: var(--bg); font-size: .78rem; font-weight: 800; }
+.language-button { color: var(--acid); font-size: .7rem; font-weight: 900; letter-spacing: .08em; }
+.header-cta { min-height: 42px; display: inline-flex; align-items: center; gap: 9px; padding: 0 16px; border: 0; background: var(--text); color: var(--bg); font-size: .78rem; font-weight: 800; cursor: pointer; }
 .header-cta svg { width: 16px; }
 .menu-button, .mobile-nav { display: none; }
 
@@ -87,7 +88,6 @@ button { font: inherit; }
 .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
 .hero-meta svg { width: 15px; color: var(--cyan); }
 .portrait-wrap { position: relative; width: min(100%, 470px); max-width: 470px; margin-left: auto; }
-.portrait-label { position: absolute; top: -28px; right: 0; color: var(--muted); font-size: .66rem; letter-spacing: .18em; text-transform: uppercase; }
 .portrait-frame { position: relative; aspect-ratio: .78; overflow: hidden; border: 1px solid var(--line); background: var(--surface); clip-path: polygon(0 0, 88% 0, 100% 10%, 100% 100%, 0 100%); }
 .portrait-frame img { object-fit: cover; object-position: 50% 18%; filter: saturate(.82) contrast(1.04); }
 .portrait-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(4, 10, 18, .9)); }
@@ -99,9 +99,10 @@ button { font: inherit; }
 .orbit-card span { font-size: .75rem; line-height: 1.45; }
 
 .ticker { overflow: hidden; border-block: 1px solid var(--line); background: var(--bg-soft); }
-.ticker > div { min-width: max-content; display: flex; align-items: center; animation: ticker 28s linear infinite; }
+.ticker-track { width: max-content; display: flex; align-items: center; animation: ticker 75s linear infinite; will-change: transform; }
+.ticker-group { display: flex; align-items: center; flex-shrink: 0; }
 .ticker span { padding: 20px 28px; color: var(--muted); font-family: var(--font-display), serif; font-size: 1.4rem; }
-.ticker i { margin-left: 56px; color: var(--acid); font-style: normal; }
+.ticker i { width: 8px; height: 8px; display: inline-block; margin-left: 56px; border: 1px solid var(--acid); transform: rotate(45deg); }
 @keyframes ticker { to { transform: translateX(-50%); } }
 
 .about-section { display: grid; grid-template-columns: 1.1fr .9fr; gap: 80px; padding-block: 120px; }
@@ -192,7 +193,7 @@ button { font: inherit; }
 .eyebrow.light { color: var(--ink); opacity: .72; }
 .contact-section h2 { max-width: 1000px; margin: 0; font-family: var(--font-display), serif; font-size: clamp(4rem, 9vw, 8.5rem); font-weight: 600; line-height: .8; letter-spacing: -.06em; }
 .contact-intro { max-width: 600px; margin: 36px 0; font-size: 1.05rem; line-height: 1.7; }
-.contact-email { width: fit-content; display: flex; align-items: center; gap: 12px; padding-bottom: 8px; border-bottom: 2px solid var(--ink); font-size: clamp(1rem, 2.5vw, 1.8rem); font-weight: 800; }
+.contact-email { width: fit-content; display: flex; align-items: center; gap: 12px; padding: 0 0 8px; border: 0; border-bottom: 2px solid var(--ink); background: transparent; color: var(--ink); font-size: clamp(1rem, 2.5vw, 1.8rem); font-weight: 800; cursor: pointer; }
 .contact-email svg { width: 22px; }
 .footer-bottom { margin-top: 110px; padding-top: 24px; display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 30px; border-top: 1px solid rgba(10,18,25,.28); }
 .footer-bottom > div:first-child { display: flex; align-items: center; gap: 12px; }
@@ -251,7 +252,6 @@ button { font: inherit; }
   .faq-answer p { margin-left: 50px; }
   .contact-section { padding-top: 80px; }
   .contact-section h2 { font-size: clamp(4rem, 20vw, 6rem); }
-  .contact-email { word-break: break-all; }
   .footer-bottom { margin-top: 80px; }
 }
 
