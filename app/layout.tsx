@@ -14,8 +14,25 @@ const sans = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://porfolio-web-sage.vercel.app"),
   title: "Juan Ignacio Cuevas | Portfolio",
   description: "Portfolio profesional de Juan Ignacio Cuevas, Desarrollador Full Stack especializado en React, Supabase, SQL y mejora de procesos.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Juan Ignacio Cuevas | Desarrollador Full Stack",
+    description: "Construyo soluciones web de punta a punta con React, Supabase, SQL y foco en procesos claros.",
+    url: "/",
+    siteName: "Portfolio de Juan Ignacio Cuevas",
+    locale: "es_AR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Juan Ignacio Cuevas | Desarrollador Full Stack",
+    description: "Construyo soluciones web de punta a punta con React, Supabase, SQL y foco en procesos claros.",
+  },
 };
 
 export default function RootLayout({
