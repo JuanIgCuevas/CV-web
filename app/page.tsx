@@ -72,6 +72,8 @@ const copy = {
     education: "Formación",
     continuousLearning: "Formación continua",
     learningTitle: "Aprender también es parte del trabajo.",
+    viewCertificate: "Ver certificado",
+    closeCertificate: "Cerrar certificado ampliado",
     quickQuestions: "Preguntas rápidas",
     faqTitle: "Lo importante, sin vueltas.",
     contact: "Contacto",
@@ -116,6 +118,8 @@ const copy = {
     education: "Education",
     continuousLearning: "Continuous learning",
     learningTitle: "Learning is part of the work.",
+    viewCertificate: "View certificate",
+    closeCertificate: "Close enlarged certificate",
     quickQuestions: "Quick questions",
     faqTitle: "What matters, clearly stated.",
     contact: "Contact",
@@ -163,6 +167,7 @@ export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState<(typeof projectFilters)[number]>("Todos");
   const [openFaq, setOpenFaq] = useState(0);
+  const [activeCertificate, setActiveCertificate] = useState<(typeof profile.certificates)[number] | null>(null);
 
   useEffect(() => {
     setTheme(document.documentElement.dataset.theme === "light" ? "light" : "dark");
@@ -170,6 +175,22 @@ export default function HomePage() {
     setLanguage(savedLanguage);
     document.documentElement.lang = savedLanguage;
   }, []);
+
+  useEffect(() => {
+    if (!activeCertificate) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setActiveCertificate(null);
+    };
+
+    document.addEventListener("keydown", closeOnEscape);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+      document.body.style.overflow = "";
+    };
+  }, [activeCertificate]);
 
   const content = language === "es" ? profile : profileEn;
   const ui = copy[language];
@@ -379,7 +400,20 @@ export default function HomePage() {
         <div className="certificate-list">
           {content.certificates.map((certificate, index) => (
             <Reveal key={certificate.name} className="certificate-row" delay={index * 0.04}>
-              <span>0{index + 1}</span><h3>{certificate.name}</h3><p>{certificate.issuer}</p><time>{certificate.date}</time>
+              <span>0{index + 1}</span>
+              <h3>{certificate.name}</h3>
+              <p>{certificate.issuer}</p>
+              {certificate.image ? (
+                <button
+                  className="certificate-preview"
+                  type="button"
+                  onClick={() => setActiveCertificate(certificate)}
+                  aria-label={`${ui.viewCertificate}: ${certificate.name}`}
+                >
+                  <Image src={certificate.image} alt="" width={112} height={79} />
+                </button>
+              ) : <span className="certificate-preview-placeholder" aria-hidden="true" />}
+              <time>{certificate.date}</time>
             </Reveal>
           ))}
         </div>
@@ -419,6 +453,19 @@ export default function HomePage() {
           </div>
         </div>
       </footer>
+
+      {activeCertificate?.image ? (
+        <div className="certificate-modal" role="dialog" aria-modal="true" aria-labelledby="certificate-modal-title">
+          <button className="certificate-modal-backdrop" type="button" onClick={() => setActiveCertificate(null)} aria-label={ui.closeCertificate} />
+          <div className="certificate-modal-content">
+            <button className="certificate-modal-close" type="button" onClick={() => setActiveCertificate(null)} aria-label={ui.closeCertificate}>
+              <X aria-hidden="true" />
+            </button>
+            <Image src={activeCertificate.image} alt={`Certificado: ${activeCertificate.name}`} width={1122} height={794} priority />
+            <p id="certificate-modal-title">{activeCertificate.name}</p>
+          </div>
+        </div>
+      ) : null}
     </main>
   );
 }
