@@ -1,5 +1,12 @@
 export type ProjectCategory = "Producto" | "Automatización" | "Aprendizaje";
 
+export type Certificate = {
+  name: string;
+  date: string;
+  issuer: string;
+  image?: string;
+};
+
 const shared = {
   name: "Juan Ignacio Cuevas",
   shortName: "Juan Cuevas",
@@ -101,16 +108,37 @@ export const profile = {
     },
   ],
   certificates: [
-    { name: "Curso de IA para Desarrolladores", date: "Abr. 2026", issuer: "IT School · Educación IT" },
-    { name: "Certificación en Python", date: "Nov. 2025", issuer: "IT School · Educación IT" },
+    {
+      name: "Curso de IA para Desarrolladores",
+      date: "Abr. 2026",
+      issuer: "IT School · Educación IT",
+      image: "/certificates/curso-ia-para-desarrolladores.jpg",
+    },
+    {
+      name: "Certificación en Python",
+      date: "Nov. 2025",
+      issuer: "IT School · Educación IT",
+      image: "/certificates/certificacion-python.jpg",
+    },
     {
       name: "Optimización y mejora de procesos con herramientas de IA",
       date: "Ago. 2025",
       issuer: "IT School · Educación IT",
+      image: "/certificates/optimizacion-procesos-ia.jpg",
     },
-    { name: "Bases de Git y GitHub", date: "May. 2024", issuer: "Desafío Latam" },
-    { name: "Un día como Data Analyst", date: "May. 2024", issuer: "Desafío Latam" },
-  ],
+    {
+      name: "Bases de Git y GitHub",
+      date: "May. 2024",
+      issuer: "Desafío Latam",
+      image: "/certificates/bases-git-github.jpg",
+    },
+    {
+      name: "Un día como Data Analyst",
+      date: "May. 2024",
+      issuer: "Desafío Latam",
+      image: "/certificates/un-dia-data-analyst.jpg",
+    },
+  ] as Certificate[],
   languages: ["Español · Nativo", "Inglés · Intermedio"],
   projects: [
     {
@@ -140,17 +168,17 @@ export const profile = {
   ],
   faqs: [
     {
-      question: "¿Qué tipo de rol estás buscando?",
+      question: "¿Qué rol estoy buscando?",
       answer:
         "Busco una oportunidad full time en desarrollo Full Stack donde pueda seguir creciendo, participar en distintas capas del producto y aportar mi experiencia en análisis y mejora de procesos.",
     },
     {
-      question: "¿Cuál es tu modalidad de trabajo?",
+      question: "¿Qué modalidad de trabajo prefiero?",
       answer:
         "Estoy abierto a propuestas remotas, híbridas o presenciales en Tandil, según el desafío y la dinámica del equipo.",
     },
     {
-      question: "¿Qué aportás a un equipo?",
+      question: "¿Qué puedo aportar a un equipo?",
       answer:
         "Una mirada práctica que une operación y tecnología: puedo detectar un problema en el flujo, entender su impacto y acompañar la construcción de una solución clara.",
     },
@@ -222,16 +250,37 @@ export const profileEn = {
     },
   ],
   certificates: [
-    { name: "AI for Developers", date: "Apr. 2026", issuer: "IT School · Educación IT" },
-    { name: "Python Certification", date: "Nov. 2025", issuer: "IT School · Educación IT" },
+    {
+      name: "AI for Developers",
+      date: "Apr. 2026",
+      issuer: "IT School · Educación IT",
+      image: "/certificates/curso-ia-para-desarrolladores.jpg",
+    },
+    {
+      name: "Python Certification",
+      date: "Nov. 2025",
+      issuer: "IT School · Educación IT",
+      image: "/certificates/certificacion-python.jpg",
+    },
     {
       name: "Process Optimization and Improvement with AI Tools",
       date: "Aug. 2025",
       issuer: "IT School · Educación IT",
+      image: "/certificates/optimizacion-procesos-ia.jpg",
     },
-    { name: "Git and GitHub Fundamentals", date: "May 2024", issuer: "Desafío Latam" },
-    { name: "A Day as a Data Analyst", date: "May 2024", issuer: "Desafío Latam" },
-  ],
+    {
+      name: "Git and GitHub Fundamentals",
+      date: "May 2024",
+      issuer: "Desafío Latam",
+      image: "/certificates/bases-git-github.jpg",
+    },
+    {
+      name: "A Day as a Data Analyst",
+      date: "May 2024",
+      issuer: "Desafío Latam",
+      image: "/certificates/un-dia-data-analyst.jpg",
+    },
+  ] as Certificate[],
   languages: ["Spanish · Native", "English · Intermediate"],
   projects: [
     {
